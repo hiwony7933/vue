@@ -33,3 +33,36 @@ if (isError)  {          // 이즈에러가 트루이면
 } else {                 // 펄스이면 
     return null;         //리턴으로 널을 준다
 }
+
+Vue CLI
+
+- 명령어를 통한 특정 액션을 수행하는 도구 , 명령어 보조 도구, 명령어 실행 도구
+
+* Installation
+
+$node -v
+10.xx 버전
+
+$npm -v
+6.xx 버전
+
+$npm install -g @vue/cli
+설치 명령어
+
+
+$vue create vue-cli
+$cd vue-cli
+
+$npm run serve // 실행명령어
+
+
+hello-world -> 케밥 케이스
+HelloWorld -> 파스칼 케이스 단어 앞에 대문자
+
+컴포넌트는 두단어 이상 파스칼 케이스로 생성 - AppHeader.vue
+- html 표준태그인지 컴포넌트 태그인지 브라우저가 알길이 없어서 구분해야된다.
+- 스타일가이드 권고사항
+
+v-bind : 프롭스 속성이름 = "상위 컴포넌트의 데이터 이름"
+
+{{ }} -> 콧수염괄호를 이용해서 화면에 바로 보여주는것 리엑티비티
