@@ -7,6 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <dib id="app"></dib>
+    <div id="app">
+        <!--엘리먼트가 있어야 특정 태그에 붙여야 vue를 사용할 수 있다-->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el : '#app' 
+            // eliment 약자 , 바디태크 안에서 app ID를 가진 태그를 찾아서 인스턴스를 붙이겠다.
+            // 뷰의 기능과 속성들이 유효해진다. 
+            // 엘리먼트가 없으면 그 아래 데이터든 어떤 속성값이든 사용할 수 없다. 
+            ,
+            data : {
+                message : 'hi'
+            }
+        });
+    </script>
 </body>
 </html>
