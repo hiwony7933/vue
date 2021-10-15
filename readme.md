@@ -21,3 +21,15 @@ Promise -> 자바의 비동기 처리 패턴
 
 바인딩 -> 값이 연결되는 구간
 
+
+
+삼항연산자
+computed  // return으로 와야됨
+
+reuturn this.isError ? 'warning' : null ;  // 이즈에러가 트루면 워닝이고 아니면 널
+
+if (isError)  {          // 이즈에러가 트루이면
+    return 'warning'     //리턴으로 워닝을 주고
+} else {                 // 펄스이면 
+    return null;         //리턴으로 널을 준다
+}

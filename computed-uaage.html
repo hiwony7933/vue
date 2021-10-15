@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:class="{warning : isError}">Hello</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue ({
+            el : '#app',
+            data : {
+                // cname : 'blue-text',
+                isError : false
+            }, 
+            computed : { //벨리데이션이라던지 간단한 텍스트연산 적합
+                doubleNum : function() {
+                    return this.num * 2 ;
+                }
+            },
+            watch : { // 무거운동작들 데이터요청에 적합, 데이터요청할때 메서드에 있는 내용을 엮는게 좋다
+                num : function(newValue) { 
+                    this.fetchUserByNumber(nuwValue)
+                }
+            },
+            methods  : {
+                fetchUserByNumber : function(num) {
+                    console.log(num)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
