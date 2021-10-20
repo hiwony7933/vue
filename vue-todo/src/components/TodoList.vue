@@ -1,12 +1,11 @@
 <template>
     <div>
         <ul>
-            <li class="shadow" v-for="(todoItem, index) in todoItems" v-bind:key="todoItem">
-                {{ todoItem }}
-            <button class="removeBtn" v-on:click="removeTodo(todoItem, index)">Dellete</button>
-            <!-- <span class="removeBtn"> -->
-                <!-- <i class="fas fa-trash-alt"></i> -->
-            <!-- </span> -->
+            <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item" class="shadow">
+                <button class="checkBtn" v-bind:class="{checkBtnCompleted : todoItem.completed}" 
+                    v-on:click="toggleComplete(todoItem, index)">Check</button>
+                <span v-bind:class="{textCompleted : todoItem.completed}">{{ todoItem.item }}</span>
+                <button class="removeBtn" v-on:click="removeTodo(todoItem, index)">Dellete</button>
             </li>
         </ul>
     </div>
@@ -21,16 +20,25 @@ export default {
     },
     methods : {
         removeTodo : function(todoItem, index) {
-            console.log(todoItem, index)
+            // console.log(todoItem, index);
             localStorage.removeItem(todoItem);
             this.todoItems.splice(index, 1);
+        }, 
+        toggleComplete : function(todoItem ) {
+            todoItem.completed = !todoItem.completed;
+            // 로컬 스토리지의 데이터를 갱신 (update api가 없음)
+            localStorage.removeItem(todoItem.item);
+            localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
         }
     },
     created : function() {
         if ( localStorage.length > 0) {
             for (var i = 0; i < localStorage.length ; i ++) {
                 if (localStorage.key(i) !=='loglevel:webpack-dev-server'){
-                    this.todoItems.push(localStorage.key(i));
+                    this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+
+
+                    // this.todoItems.push(localStorage.key(i));
                 }              
             }
         }
@@ -38,7 +46,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 ul {
     list-style-type: none ;
     padding-left: 0px;
